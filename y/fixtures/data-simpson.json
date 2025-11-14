@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2,
+    "name": "Marge Simpson",
+    "occupation": "Unemployed",
+    "gender": "Female",
+    "birthdate": null,
+    "age": 39
+  },
+  {
+    "id": 25,
+    "name": "Ralph Wiggum",
+    "occupation": "Student at Springfield Elementary School",
+    "gender": "Male",
+    "birthdate": "1982-02-10",
+    "age": 8
+  },
+  {
+    "id": 100,
+    "name": "Alice Glick",
+    "occupation": "Church Organist",
+    "gender": "Female",
+    "birthdate": null,
+    "age": null
+  }
+]
