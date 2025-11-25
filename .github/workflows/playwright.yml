@@ -20,17 +20,19 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    
-    - name: Install dependencies
+      - name: Install dependencies
       run: npm ci
     
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     
-    - name: Install Allure
+    - name: Install Allure CommandLine
       run: |
-        npm install -g allure-commandline
-        npm install --save-dev allure-playwright
+        sudo apt-get update
+        sudo apt-get install -y openjdk-8-jre-headless
+        curl -o allure-2.25.0.tgz -Ls https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz
+        sudo tar -zxvf allure-2.25.0.tgz -C /opt/
+        sudo ln -s /opt/allure-2.25.0/bin/allure /usr/bin/allure
     
     - name: Run Playwright tests
       run: npx playwright test
