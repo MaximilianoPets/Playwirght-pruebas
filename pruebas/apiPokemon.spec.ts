@@ -16,7 +16,7 @@ test('PokeAPI Pikachu test', async ({ request }) => {
   console.log('Respuesta de la API:', JSON.stringify(responseBody, null, 2));
 });
 
-test('Validar nombre del Pokémon Pikachu', async ({ request }) => {
+test.only('Validar nombre del Pokémon Pikachu', async ({ request }) => {
   const res = await request.get('https://pokeapi.co/api/v2/pokemon/pikachu');
   expect(res.status()).toBe(200);
   
@@ -46,6 +46,9 @@ test('Validar stats del Pokémon Pikachu', async ({ request }) => {
   const attackStat = responseBody.stats.find((stat: any) => stat.stat.name === 'attack');
   const speedStat = responseBody.stats.find((stat: any) => stat.stat.name === 'speed');
   
+  expect(hpStat).toBeDefined();
+  expect(attackStat).toBeDefined();
+  expect(speedStat).toBeDefined();
   expect(hpStat.base_stat).toBe(35);
   expect(attackStat.base_stat).toBe(55);
   expect(speedStat.base_stat).toBe(90);
@@ -70,4 +73,5 @@ test('Validar sprites del Pokémon Pikachu', async ({ request }) => {
   expect(responseBody.sprites.back_default).toBeDefined();
   expect(responseBody.sprites.other).toBeDefined();
   expect(responseBody.sprites.other['official-artwork']).toBeDefined();
+  expect(responseBody.sprites.other['official-artwork'].front_default).toBeDefined();
 });

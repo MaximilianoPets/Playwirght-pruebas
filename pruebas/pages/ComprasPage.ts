@@ -31,7 +31,7 @@ export class ComprasPage {
         
       
         for (const producto of productos) {
-            await expect(this.page.locator('.inventory_item_name', { hasText: producto })).toBeVisible();
+            await expect(this.page.locator('.inventory_item_name').filter({ hasText: producto })).toBeVisible();
         }
         
         await this.page.locator('[data-test="finish"]').click();

@@ -2,8 +2,13 @@ import { test, expect } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Declarar __dirname para TypeScript (disponible en CommonJS)
+declare const __dirname: string;
+
 // Función helper para guardar datos en el fixture
 function saveCharacterData(characterData: any) {
+  // Usar path.resolve para construir la ruta de forma relativa al archivo actual
+  // En Playwright, __dirname está disponible en CommonJS
   const fixturesDir = path.join(__dirname, 'fixtures');
   const fixturePath = path.join(fixturesDir, 'data-simpson.json');
   
