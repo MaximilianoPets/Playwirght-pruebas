@@ -36,8 +36,13 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: false,
-    
+
+    /** 
+     * Corre en modo headless en CI, headed en local
+     * process.env.CI se setea automáticamente por GitHub Actions
+     */
+    headless: !!process.env.CI,
+
     /* Ignore HTTPS errors */
     ignoreHTTPSErrors: true,
   },
